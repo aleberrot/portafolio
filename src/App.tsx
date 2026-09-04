@@ -1,29 +1,9 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react';
+import { useReveal, revealStyle } from './hooks/useReveal';
 
 type Lang = 'en' | 'es'
 type Page = 'home' | 'canal-etico' | 'pantteon' | 'rs-ingenieria'
 
-// ── Reveal hook ───────────────────────────────────────────────────────────────
-function useReveal(threshold = 0.1) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [vis, setVis] = useState(false)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVis(true) }, { threshold })
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [])
-  return { ref, vis }
-}
-
-function fu(vis: boolean, delay = 0): React.CSSProperties {
-  return {
-    opacity: vis ? 1 : 0,
-    transform: vis ? 'none' : 'translateY(22px)',
-    transition: `opacity 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
-  }
-}
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 interface Project {
@@ -464,13 +444,13 @@ function HeroSection({ lang, onScrollTo }: { lang: Lang; onScrollTo: (id: string
 
   return (
     <section className="min-h-screen flex flex-col justify-center pt-24 pb-20 px-6 lg:px-16 max-w-[1440px] mx-auto">
-      <div style={fu(loaded, 0)} className="mb-8">
+      <div style={revealStyle(loaded, 0)} className="mb-8">
         <p className="font-mono text-lime text-[11px] tracking-[0.22em] uppercase">
           {en ? 'Full-Stack & Mobile Developer' : 'Desarrollador Full-Stack & Mobile'}
         </p>
       </div>
 
-      <div style={fu(loaded, 120)}>
+      <div style={revealStyle(loaded, 120)}>
         <h1 className="font-display text-[clamp(44px,7vw,96px)] leading-[1.0] tracking-tight text-ink mb-8">
           {en ? (
             <>I design, <em className="italic">build</em><br />and deploy<br />digital products<br />for real businesses.</>
@@ -480,7 +460,7 @@ function HeroSection({ lang, onScrollTo }: { lang: Lang; onScrollTo: (id: string
         </h1>
       </div>
 
-      <div style={fu(loaded, 240)} className="max-w-lg mb-10">
+      <div style={revealStyle(loaded, 240)} className="max-w-lg mb-10">
         <p className="text-dim text-lg leading-relaxed">
           {en
             ? 'From full-stack platforms and production mobile apps to business websites designed to generate opportunities.'
@@ -488,7 +468,7 @@ function HeroSection({ lang, onScrollTo }: { lang: Lang; onScrollTo: (id: string
         </p>
       </div>
 
-      <div style={fu(loaded, 340)} className="flex flex-wrap items-center gap-4 mb-16">
+      <div style={revealStyle(loaded, 340)} className="flex flex-wrap items-center gap-4 mb-16">
         <button onClick={() => onScrollTo('work')} className="flex items-center gap-2.5 px-6 py-3 bg-lime text-canvas font-medium text-sm rounded-full hover:bg-lime/90 transition-all duration-200">
           {en ? 'View my work' : 'Ver mi trabajo'}
           <ArrowRight />
@@ -498,7 +478,7 @@ function HeroSection({ lang, onScrollTo }: { lang: Lang; onScrollTo: (id: string
         </button>
       </div>
 
-      <div style={fu(loaded, 440)} className="flex items-center gap-5">
+      <div style={revealStyle(loaded, 440)} className="flex items-center gap-5">
         <a href="https://github.com/aberrotaran" target="_blank" rel="noopener noreferrer" className="text-dim hover:text-ink transition-colors duration-200" aria-label="GitHub">
           <GithubIcon />
         </a>
@@ -549,7 +529,7 @@ function ProjectEntry({ project, lang, mockup, onViewCase }: {
 
   if (project.layout === 'right') {
     return (
-      <div ref={ref} style={fu(vis)} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div ref={ref} style={revealStyle(vis)} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         {contentBlock}
         {imageBlock}
       </div>
@@ -558,7 +538,7 @@ function ProjectEntry({ project, lang, mockup, onViewCase }: {
 
   if (project.layout === 'left') {
     return (
-      <div ref={ref} style={fu(vis)} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div ref={ref} style={revealStyle(vis)} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div className="order-2 lg:order-1">{imageBlock}</div>
         <div className="order-1 lg:order-2">{contentBlock}</div>
       </div>
@@ -566,7 +546,7 @@ function ProjectEntry({ project, lang, mockup, onViewCase }: {
   }
 
   return (
-    <div ref={ref} style={fu(vis)}>
+    <div ref={ref} style={revealStyle(vis)}>
       <div className="mb-10 transition-transform duration-700 hover:scale-[1.01] overflow-hidden rounded-xl">{mockup}</div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
         <div>
@@ -598,7 +578,7 @@ function WorkSection({ lang, setPage }: { lang: Lang; setPage: (p: Page) => void
   return (
     <section id="work" className="py-24 lg:py-36 border-t border-line">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-16">
-        <div ref={ref} style={fu(vis)} className="mb-16 lg:mb-24">
+        <div ref={ref} style={revealStyle(vis)} className="mb-16 lg:mb-24">
           <p className="font-mono text-[11px] text-dim tracking-widest uppercase mb-4">
             {en ? '── Selected Work' : '── Trabajo Selecto'}
           </p>
@@ -628,7 +608,7 @@ function ServicesSection({ lang }: { lang: Lang }) {
   return (
     <section id="services" className="py-24 lg:py-36 border-t border-line bg-panel">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-16">
-        <div ref={ref} style={fu(vis)} className="mb-16 lg:mb-24">
+        <div ref={ref} style={revealStyle(vis)} className="mb-16 lg:mb-24">
           <p className="font-mono text-[11px] text-dim tracking-widest uppercase mb-4">
             {en ? '── Services' : '── Servicios'}
           </p>
@@ -640,7 +620,7 @@ function ServicesSection({ lang }: { lang: Lang }) {
           {items.map((svc, i) => {
             const { ref: r, vis: v } = useReveal()
             return (
-              <div key={svc.verb} ref={r} style={fu(v, i * 80)} className="bg-panel p-10 lg:p-12">
+              <div key={svc.verb} ref={r} style={revealStyle(v, i * 80)} className="bg-panel p-10 lg:p-12">
                 <div className="font-display italic text-[52px] lg:text-[64px] text-ink leading-none mb-8">{svc.verb}</div>
                 <p className="text-ink/70 text-[15px] leading-relaxed mb-8">{svc.tagline}</p>
                 <ul className="flex flex-col gap-2.5">
@@ -684,7 +664,7 @@ function ExperienceSection({ lang }: { lang: Lang }) {
   return (
     <section id="experience" className="py-24 lg:py-36 border-t border-line">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-16">
-        <div ref={ref} style={fu(vis)} className="mb-16 lg:mb-20">
+        <div ref={ref} style={revealStyle(vis)} className="mb-16 lg:mb-20">
           <p className="font-mono text-[11px] text-dim tracking-widest uppercase mb-4">
             {en ? '── Experience' : '── Experiencia'}
           </p>
@@ -696,7 +676,7 @@ function ExperienceSection({ lang }: { lang: Lang }) {
           {entries.map((entry, i) => {
             const { ref: r, vis: v } = useReveal()
             return (
-              <div key={entry.company} ref={r} style={fu(v, i * 100)} className="flex gap-8 lg:gap-12 pb-14 last:pb-0">
+              <div key={entry.company} ref={r} style={revealStyle(v, i * 100)} className="flex gap-8 lg:gap-12 pb-14 last:pb-0">
                 <div className="flex flex-col items-center pt-2">
                   <div className="w-2 h-2 rounded-full bg-lime flex-shrink-0" />
                   {i < entries.length - 1 && <div className="w-px flex-1 bg-line mt-3" />}
@@ -727,7 +707,7 @@ function AboutSection({ lang }: { lang: Lang }) {
   return (
     <section id="about" className="py-24 lg:py-36 border-t border-line bg-panel">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-16">
-        <div ref={ref} style={fu(vis)} className="mb-16">
+        <div ref={ref} style={revealStyle(vis)} className="mb-16">
           <p className="font-mono text-[11px] text-dim tracking-widest uppercase mb-4">
             {en ? '── About' : '── Sobre mí'}
           </p>
@@ -740,7 +720,7 @@ function AboutSection({ lang }: { lang: Lang }) {
             {(() => {
               const { ref: r, vis: v } = useReveal()
               return (
-                <div ref={r} style={fu(v)}>
+                <div ref={r} style={revealStyle(v)}>
                   <p className="text-ink/80 text-lg leading-relaxed mb-6">
                     {en
                       ? "I'm a developer focused on turning business needs into working digital products. I enjoy working across the full product lifecycle — from Figma and frontend implementation to APIs, databases, deployment and production delivery."
@@ -759,7 +739,7 @@ function AboutSection({ lang }: { lang: Lang }) {
             {(() => {
               const { ref: r, vis: v } = useReveal()
               return (
-                <div ref={r} style={fu(v, 100)} className="grid grid-cols-2 gap-8">
+                <div ref={r} style={revealStyle(v, 100)} className="grid grid-cols-2 gap-8">
                   {stack.map(group => (
                     <div key={group.group}>
                       <div className="font-mono text-[11px] text-lime/70 tracking-wider uppercase mb-4">{group.group}</div>
@@ -787,7 +767,7 @@ function ContactSection({ lang }: { lang: Lang }) {
 
   return (
     <section id="contact" className="py-28 lg:py-44 border-t border-line">
-      <div ref={ref} style={fu(vis)} className="max-w-[1440px] mx-auto px-6 lg:px-16 text-center">
+      <div ref={ref} style={revealStyle(vis)} className="max-w-[1440px] mx-auto px-6 lg:px-16 text-center">
         <p className="font-mono text-[11px] text-dim tracking-widest uppercase mb-8">
           {en ? '── Contact' : '── Contacto'}
         </p>
