@@ -1,0 +1,10 @@
+{
+  "description": "Enables users to visualize and bring ideas to life through intuitive design tools that simplify project realization and creative expression.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
