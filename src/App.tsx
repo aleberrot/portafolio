@@ -1,27 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { useReveal, revealStyle } from './hooks/useReveal';
 import { GithubIcon, MailIcon, LinkedinIcon, ArrowLeft, ArrowRight } from './components/ui/icons';
+import { Project, Lang } from './types';
 
-type Lang = 'en' | 'es'
-type Page = 'home' | 'canal-etico' | 'pantteon' | 'rs-ingenieria'
-
-
-// ── Data ──────────────────────────────────────────────────────────────────────
-interface Project {
-  num: string
-  id: Page
-  category: { en: string; es: string }
-  title: string
-  desc: { en: string; es: string }
-  roles: { en: string[]; es: string[] }
-  tech: string[]
-  layout: 'right' | 'left' | 'full'
-}
+// eliminar, usar rutas
+export type Page = 'home' | 'canal-etico' | 'pantteon' | 'rs-ingenieria'
 
 const projects: Project[] = [
   {
     num: '01',
-    id: 'canal-etico',
+    slug: 'canal-etico',
     category: { en: 'Full-Stack Web Application', es: 'Aplicación Web Full-Stack' },
     title: 'Canal Ético',
     desc: {
@@ -34,7 +22,7 @@ const projects: Project[] = [
   },
   {
     num: '02',
-    id: 'pantteon',
+    slug: 'pantteon',
     category: { en: 'Mobile App Modernization', es: 'Modernización de App Móvil' },
     title: 'Pantteon',
     desc: {
@@ -47,7 +35,7 @@ const projects: Project[] = [
   },
   {
     num: '03',
-    id: 'rs-ingenieria',
+    slug: 'rs-ingenieria',
     category: { en: 'Corporate Website', es: 'Sitio Web Corporativo' },
     title: 'RS Ingeniería',
     desc: {
@@ -789,7 +777,7 @@ function CaseStudyPage({ page, lang, onBack, onNext }: {
   const allProjects = ['canal-etico', 'pantteon', 'rs-ingenieria'] as Page[]
   const currentIndex = allProjects.indexOf(page)
   const nextProject = allProjects[(currentIndex + 1) % allProjects.length]
-  const nextTitle = projects.find(p => p.id === nextProject)?.title ?? ''
+  const nextTitle = projects.find(p => p.slug === nextProject)?.title ?? ''
 
   const canalEticoContent = {
     tagline: en ? 'A multi-company whistleblowing platform for secure workplace reporting.' : 'Plataforma multiempresa de denuncias para reportes seguros en el trabajo.',
@@ -860,7 +848,7 @@ function CaseStudyPage({ page, lang, onBack, onNext }: {
   }
 
   const data = page === 'canal-etico' ? canalEticoContent : page === 'pantteon' ? pantteonContent : rsContent
-  const project = projects.find(p => p.id === page)!
+  const project = projects.find(p => p.slug === page)!
 
   return (
     <div className="min-h-screen bg-canvas text-ink">
