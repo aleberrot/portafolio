@@ -3,69 +3,13 @@ import { useReveal, revealStyle } from './hooks/useReveal';
 import { GithubIcon, MailIcon, LinkedinIcon, ArrowLeft, ArrowRight } from './components/ui/icons';
 import { Project, Lang } from './types';
 import { projects } from './data/projects';
+import { servicesData } from './data/services';
+import { stackData } from './data/stack';
+import { expData } from './data/experience';
 
 // eliminar, usar rutas
 export type Page = 'home' | 'canal-etico' | 'pantteon' | 'rs-ingenieria'
 
-
-const servicesData = {
-  en: [
-    { verb: 'Build', tagline: 'Full-stack applications from idea to production.', items: ['Web applications', 'REST APIs', 'Databases', 'Business platforms'] },
-    { verb: 'Improve', tagline: 'Modernize and extend existing digital products.', items: ['React Native apps', 'UI redesigns', 'Bug fixing', 'Legacy modernization'] },
-    { verb: 'Launch', tagline: 'Take web and mobile products into production.', items: ['Cloud deployment', 'Google Play', 'App Store', 'Business websites'] },
-  ],
-  es: [
-    { verb: 'Construyo', tagline: 'Aplicaciones full-stack desde la idea hasta producción.', items: ['Aplicaciones web', 'APIs REST', 'Bases de datos', 'Plataformas empresariales'] },
-    { verb: 'Mejoro', tagline: 'Modernizo y extiendo productos digitales existentes.', items: ['Apps React Native', 'Rediseños de UI', 'Corrección de errores', 'Modernización legacy'] },
-    { verb: 'Lanzo', tagline: 'Llevo productos web y móviles a producción.', items: ['Despliegue en la nube', 'Google Play', 'App Store', 'Sitios empresariales'] },
-  ],
-}
-
-const stackData = {
-  en: [
-    { group: 'Frontend', items: ['React', 'React Native', 'TypeScript', 'JavaScript'] },
-    { group: 'Backend', items: ['Java', 'Spring Boot', 'Python', 'FastAPI'] },
-    { group: 'Data', items: ['PostgreSQL', 'SQL'] },
-    { group: 'Tools & Cloud', items: ['Figma', 'Git', 'OCI', 'Vercel', 'Cloudflare R2', 'Expo / EAS'] },
-  ],
-  es: [
-    { group: 'Frontend', items: ['React', 'React Native', 'TypeScript', 'JavaScript'] },
-    { group: 'Backend', items: ['Java', 'Spring Boot', 'Python', 'FastAPI'] },
-    { group: 'Datos', items: ['PostgreSQL', 'SQL'] },
-    { group: 'Herramientas & Nube', items: ['Figma', 'Git', 'OCI', 'Vercel', 'Cloudflare R2', 'Expo / EAS'] },
-  ],
-}
-
-const expData = {
-  en: [
-    {
-      company: 'GCW Latam',
-      role: 'Mobile / Full-Stack Developer',
-      period: '2023 — Present',
-      desc: 'Worked on production mobile and web products, including React Native modernization, full-stack application development, cloud deployment and app-store delivery.',
-    },
-    {
-      company: 'Freelance',
-      role: 'Full-Stack & Mobile Developer',
-      period: '2021 — Present',
-      desc: "Designed and built complete digital products for clients across different industries — from corporate websites to SaaS platforms and production mobile applications.",
-    },
-  ],
-  es: [
-    {
-      company: 'GCW Latam',
-      role: 'Desarrollador Mobile / Full-Stack',
-      period: '2023 — Presente',
-      desc: 'Trabajé en productos móviles y web en producción, incluyendo modernización de React Native, desarrollo full-stack, despliegue en la nube y entrega en app stores.',
-    },
-    {
-      company: 'Freelance',
-      role: 'Desarrollador Full-Stack & Mobile',
-      period: '2021 — Presente',
-      desc: 'Diseñé y construí productos digitales completos para clientes de distintas industrias — desde sitios corporativos hasta plataformas SaaS y apps móviles en producción.',
-    },
-  ],
-}
 
 // ── Mockups ───────────────────────────────────────────────────────────────────
 function CanalEticoMockup() {
