@@ -6,6 +6,8 @@ import { projects } from './data/projects';
 import { servicesData } from './data/services';
 import { stackData } from './data/stack';
 import { expData } from './data/experience';
+import { TechTag } from './components/ui/TechTag';
+import { RoleTag } from './components/ui/RoleTag';
 
 // eliminar, usar rutas
 export type Page = 'home' | 'canal-etico' | 'pantteon' | 'rs-ingenieria'
@@ -204,15 +206,6 @@ function RSIngenieriaMockup() {
       </div>
     </div>
   )
-}
-
-// ── Tag components ────────────────────────────────────────────────────────────
-function TechTag({ label }: { label: string }) {
-  return <span className="font-mono text-[11px] text-dim border border-line px-2.5 py-1 rounded-full">{label}</span>
-}
-
-function RoleTag({ label }: { label: string }) {
-  return <span className="font-mono text-[11px] text-lime/80 border border-lime/20 bg-lime/5 px-2.5 py-1 rounded-full">{label}</span>
 }
 
 // ── Nav ───────────────────────────────────────────────────────────────────────
