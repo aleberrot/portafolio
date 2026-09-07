@@ -7,10 +7,14 @@ import { AboutSection } from "@/sections/AboutSection";
 import { ContactSection } from "@/sections/ContactSection";
 import { Footer } from "@/components/layout/Footer";
 import { Lang } from "@/types";
-import { Page } from "@/App";
+
+interface HomePageProps{
+    lang: Lang;
+    setLang: (lang: Lang) => void;
+}
 
 // ── Home page ─────────────────────────────────────────────────────────────────
-export function HomePage({ lang, setLang, setPage }: { lang: Lang; setLang: (l: Lang) => void; setPage: (p: Page) => void }) {
+export function HomePage({lang, setLang} : HomePageProps) {
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -19,7 +23,7 @@ export function HomePage({ lang, setLang, setPage }: { lang: Lang; setLang: (l: 
     <div className="bg-canvas text-ink min-h-screen">
       <Nav lang={lang} setLang={setLang} onScrollTo={scrollTo} onHome={() => {}} />
       <HeroSection lang={lang} onScrollTo={scrollTo} />
-      <WorkSection lang={lang} setPage={setPage} />
+      <WorkSection lang={lang} />
       <ServicesSection lang={lang} />
       <ExperienceSection lang={lang} />
       <AboutSection lang={lang} />

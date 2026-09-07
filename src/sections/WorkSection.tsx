@@ -5,15 +5,15 @@ import { RoleTag } from "@/components/ui/RoleTag";
 import { ArrowRight } from "@/components/ui/icons";
 import { projects } from "@/data/projects";
 import { CanalEticoMockup, PantteonMockup, RSIngenieriaMockup } from "@/components/ui/mockups";
+import { Link } from "react-router-dom";
 
 export type Page = 'home' | 'canal-etico' | 'pantteon' | 'rs-ingenieria'
 
 // ── Work ──────────────────────────────────────────────────────────────────────
-export function ProjectEntry({ project, lang, mockup, onViewCase }: {
+export function ProjectEntry({ project, lang, mockup}: {
   project: Project
   lang: Lang
   mockup: React.ReactNode
-  onViewCase: () => void
 }) {
   const { ref, vis } = useReveal()
   const en = lang === 'en'
@@ -29,10 +29,10 @@ export function ProjectEntry({ project, lang, mockup, onViewCase }: {
       <div className="flex flex-wrap gap-2 mb-9">
         {project.tech.map(t => <TechTag key={t} label={t} />)}
       </div>
-      <button onClick={onViewCase} className="flex items-center gap-2.5 text-sm text-ink hover:text-lime transition-colors duration-200 group w-fit">
+      <Link to={`/projects/${project.slug}`} className="flex items-center gap-2.5 text-sm text-ink hover:text-lime transition-colors duration-200 group w-fit">
         {en ? 'View case study' : 'Ver caso de estudio'}
         <span className="transform group-hover:translate-x-1 transition-transform duration-200"><ArrowRight /></span>
-      </button>
+      </Link>
     </div>
   )
 
@@ -76,17 +76,17 @@ export function ProjectEntry({ project, lang, mockup, onViewCase }: {
           <div className="flex flex-wrap gap-2 mb-8">
             {project.tech.map(t => <TechTag key={t} label={t} />)}
           </div>
-          <button onClick={onViewCase} className="flex items-center gap-2.5 text-sm text-ink hover:text-lime transition-colors duration-200 group w-fit">
+          <Link to={`/projects/${project.slug}`} className="flex items-center gap-2.5 text-sm text-ink hover:text-lime transition-colors duration-200 group w-fit">
             {en ? 'View case study' : 'Ver caso de estudio'}
             <span className="transform group-hover:translate-x-1 transition-transform duration-200"><ArrowRight /></span>
-          </button>
+          </Link>
         </div>
       </div>
     </div>
   )
 }
 
-export function WorkSection({ lang, setPage }: { lang: Lang; setPage: (p: Page) => void }) {
+export function WorkSection({ lang }: { lang: Lang}) {
   const { ref, vis } = useReveal()
   const en = lang === 'en'
 
@@ -105,9 +105,9 @@ export function WorkSection({ lang, setPage }: { lang: Lang; setPage: (p: Page) 
           </p>
         </div>
         <div className="flex flex-col gap-28 lg:gap-40">
-          <ProjectEntry project={projects[0]} lang={lang} mockup={<CanalEticoMockup />} onViewCase={() => setPage('canal-etico')} />
-          <ProjectEntry project={projects[1]} lang={lang} mockup={<PantteonMockup />} onViewCase={() => setPage('pantteon')} />
-          <ProjectEntry project={projects[2]} lang={lang} mockup={<RSIngenieriaMockup />} onViewCase={() => setPage('rs-ingenieria')} />
+          <ProjectEntry project={projects[0]} lang={lang} mockup={<CanalEticoMockup />} />
+          <ProjectEntry project={projects[1]} lang={lang} mockup={<PantteonMockup />} />
+          <ProjectEntry project={projects[2]} lang={lang} mockup={<RSIngenieriaMockup />}/>
         </div>
       </div>
     </section>
