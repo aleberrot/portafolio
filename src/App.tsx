@@ -1,22 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
-import { useReveal, revealStyle } from './hooks/useReveal';
 import { GithubIcon, MailIcon, LinkedinIcon, ArrowLeft, ArrowRight } from './components/ui/icons';
 import { Project, Lang } from './types';
 import { projects } from './data/projects';
-import { servicesData } from './data/services';
-import { stackData } from './data/stack';
-import { expData } from './data/experience';
 import { TechTag } from './components/ui/TechTag';
-import { RoleTag } from './components/ui/RoleTag';
 import { Nav } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
-import { HeroSection } from './sections/HeroSection';
 import { PantteonMockup, CanalEticoMockup, RSIngenieriaMockup } from './components/ui/mockups';
-import { WorkSection } from './sections/WorkSection';
-import { ServicesSection } from './sections/ServicesSection';
-import { ExperienceSection } from './sections/ExperienceSection';
-import { AboutSection } from './sections/AboutSection';
-import { ContactSection } from './sections/ContactSection';
+
+import { HomePage } from './pages/HomePage';
 
 // eliminar, usar rutas
 export type Page = 'home' | 'canal-etico' | 'pantteon' | 'rs-ingenieria'
@@ -309,25 +300,7 @@ function CaseStudyPage({ page, lang, onBack, onNext }: {
   )
 }
 
-// ── Home page ─────────────────────────────────────────────────────────────────
-function HomePage({ lang, setLang, setPage }: { lang: Lang; setLang: (l: Lang) => void; setPage: (p: Page) => void }) {
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-  }
 
-  return (
-    <div className="bg-canvas text-ink min-h-screen">
-      <Nav lang={lang} setLang={setLang} onScrollTo={scrollTo} onHome={() => {}} />
-      <HeroSection lang={lang} onScrollTo={scrollTo} />
-      <WorkSection lang={lang} setPage={setPage} />
-      <ServicesSection lang={lang} />
-      <ExperienceSection lang={lang} />
-      <AboutSection lang={lang} />
-      <ContactSection lang={lang} />
-      <Footer lang={lang} onHome={() => {}} />
-    </div>
-  )
-}
 
 // ── App ───────────────────────────────────────────────────────────────────────
 export default function App() {
