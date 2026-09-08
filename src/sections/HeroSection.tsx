@@ -2,6 +2,7 @@ import { Lang } from "@/types";
 import { useEffect, useState } from "react";
 import { revealStyle } from "@/hooks/useReveal";
 import { ArrowLeft, ArrowRight, GithubIcon, LinkedinIcon, MailIcon } from "@/components/ui/icons";
+import { contact } from "@/data/contact";
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
 export function HeroSection({ lang, onScrollTo }: { lang: Lang; onScrollTo: (id: string) => void }) {
@@ -46,13 +47,13 @@ export function HeroSection({ lang, onScrollTo }: { lang: Lang; onScrollTo: (id:
       </div>
 
       <div style={revealStyle(loaded, 440)} className="flex items-center gap-5">
-        <a href="https://github.com/aberrotaran" target="_blank" rel="noopener noreferrer" className="text-dim hover:text-ink transition-colors duration-200" aria-label="GitHub">
+        <a href={contact.github} target="_blank" rel="noopener noreferrer" className="text-dim hover:text-ink transition-colors duration-200" aria-label="GitHub">
           <GithubIcon />
         </a>
-        <a href="https://linkedin.com/in/alejandro-berrotaran" target="_blank" rel="noopener noreferrer" className="text-dim hover:text-ink transition-colors duration-200" aria-label="LinkedIn">
+        <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-dim hover:text-ink transition-colors duration-200" aria-label="LinkedIn">
           <LinkedinIcon />
         </a>
-        <a href="mailto:hola@alejandroberrotaran.dev" className="text-dim hover:text-ink transition-colors duration-200" aria-label="Email">
+        <a href={contact.email} className="text-dim hover:text-ink transition-colors duration-200" aria-label="Email">
           <MailIcon />
         </a>
       </div>

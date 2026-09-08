@@ -22,11 +22,11 @@ export function ContactSection({ lang }: { lang: Lang }) {
             : 'Estoy disponible para proyectos freelance, desarrollo de productos y oportunidades remotas.'}
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
-          <a href="mailto:hola@alejandroberrotaran.dev" className="flex items-center gap-2.5 px-7 py-3.5 bg-lime text-canvas font-medium text-sm rounded-full hover:bg-lime/90 transition-all duration-200">
+          <a href="mailto:berroteranbas@gmail.com" className="flex items-center gap-2.5 px-7 py-3.5 bg-lime text-canvas font-medium text-sm rounded-full hover:bg-lime/90 transition-all duration-200">
             {en ? "Let's work together" : 'Trabajemos juntos'}
             <ArrowRight />
           </a>
-          <a href="mailto:hola@alejandroberrotaran.dev" className="flex items-center gap-2.5 px-7 py-3.5 border border-ink/18 text-ink text-sm rounded-full hover:border-ink/40 hover:bg-ink/4 transition-all duration-200">
+          <a href="mailto:berroteranbas@gmail.com" className="flex items-center gap-2.5 px-7 py-3.5 border border-ink/18 text-ink text-sm rounded-full hover:border-ink/40 hover:bg-ink/4 transition-all duration-200">
             {en ? 'Email me' : 'Escríbeme'}
           </a>
         </div>

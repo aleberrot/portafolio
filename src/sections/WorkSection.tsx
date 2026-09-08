@@ -6,6 +6,9 @@ import { ArrowRight } from "@/components/ui/icons";
 import { projects } from "@/data/projects";
 import { CanalEticoMockup, PantteonMockup, RSIngenieriaMockup } from "@/components/ui/mockups";
 import { Link } from "react-router-dom";
+import { CanalEticoPreview } from "@/components/projects/previews/CanalEticoPreview";
+import { PantteonPreview } from "@/components/projects/previews/PantteonPreview";
+import { RsIngenieriaPreview } from "@/components/projects/previews/RsIngenieriaPreview";
 
 export type Page = 'home' | 'canal-etico' | 'pantteon' | 'rs-ingenieria'
 
@@ -105,11 +108,27 @@ export function WorkSection({ lang }: { lang: Lang}) {
           </p>
         </div>
         <div className="flex flex-col gap-28 lg:gap-40">
-          <ProjectEntry project={projects[0]} lang={lang} mockup={<CanalEticoMockup />} />
-          <ProjectEntry project={projects[1]} lang={lang} mockup={<PantteonMockup />} />
-          <ProjectEntry project={projects[2]} lang={lang} mockup={<RSIngenieriaMockup />}/>
+          <div className="flex flex-col gap-28 lg:gap-40">
+            <ProjectEntry
+              project={projects[0]}
+              lang={lang}
+              mockup={<CanalEticoPreview />}
+            />
+
+            <ProjectEntry
+            project={projects[1]}
+            lang={lang}
+            mockup={<PantteonPreview />}
+            />
+            <ProjectEntry
+    project={projects[2]}
+    lang={lang}
+    mockup={<RsIngenieriaPreview />}
+  />
         </div>
       </div>
+    </div>
     </section>
   )
 }
+

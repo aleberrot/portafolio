@@ -198,8 +198,6 @@ export function CanalEticoPage({
         />
 
         <main className="max-w-[1440px] mx-auto px-6 lg:px-16 py-16 lg:py-24">
-          <main className="max-w-[1440px] mx-auto px-6 lg:px-16 py-16 lg:py-24">
-
             {/* Hero visual */}
             <ProjectGallery
               images={[
@@ -336,9 +334,6 @@ export function CanalEticoPage({
               nextSlug="pantteon"
               nextTitle="Pantteon"
             />
-
-</main>
-
         </main>
       <Footer  lang={lang} onHome={goHome}/>
     </div>

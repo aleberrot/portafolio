@@ -1,5 +1,6 @@
 import { Lang } from "@/types";
 import { MailIcon, LinkedinIcon, GithubIcon } from "../ui/icons";
+import { contact } from "@/data/contact";
 
 
 // ── Footer ────────────────────────────────────────────────────────────────────
@@ -13,9 +14,9 @@ export function Footer({ lang, onHome }: { lang: Lang; onHome: () => void }) {
           <p className="text-dim text-[13px]">{en ? 'Full-Stack & Mobile Developer' : 'Desarrollador Full-Stack & Mobile'}</p>
         </div>
         <div className="flex items-center gap-5">
-          <a href="https://github.com/aberrotaran" target="_blank" rel="noopener noreferrer" className="text-dim hover:text-ink transition-colors" aria-label="GitHub"><GithubIcon /></a>
-          <a href="https://linkedin.com/in/alejandro-berrotaran" target="_blank" rel="noopener noreferrer" className="text-dim hover:text-ink transition-colors" aria-label="LinkedIn"><LinkedinIcon /></a>
-          <a href="mailto:hola@alejandroberrotaran.dev" className="text-dim hover:text-ink transition-colors" aria-label="Email"><MailIcon /></a>
+          <a href={contact.github} target="_blank" rel="noopener noreferrer" className="text-dim hover:text-ink transition-colors" aria-label="GitHub"><GithubIcon /></a>
+          <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-dim hover:text-ink transition-colors" aria-label="LinkedIn"><LinkedinIcon /></a>
+          <a href={contact.email} className="text-dim hover:text-ink transition-colors" aria-label="Email"><MailIcon /></a>
         </div>
         <p className="text-dim text-[12px] font-mono">
         © {new Date().getFullYear()} Alejandro Berroteran
