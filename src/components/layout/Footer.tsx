@@ -18,7 +18,7 @@ export function Footer({ lang, onHome }: { lang: Lang; onHome: () => void }) {
           <a href="mailto:hola@alejandroberrotaran.dev" className="text-dim hover:text-ink transition-colors" aria-label="Email"><MailIcon /></a>
         </div>
         <p className="text-dim text-[12px] font-mono">
-          {en ? '© 2025 Alejandro Berroterán' : '© 2025 Alejandro Berroterán'}
+        © {new Date().getFullYear()} Alejandro Berroteran
         </p>
       </div>
     </footer>

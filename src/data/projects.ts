@@ -13,6 +13,9 @@ export const projects: Project[] = [
     roles: { en: ['Full-Stack Development', 'UI/UX Design', 'Cloud Deployment'], es: ['Desarrollo Full-Stack', 'Diseño UI/UX', 'Despliegue en la Nube'] },
     tech: ['React', 'TypeScript', 'Java', 'Spring Boot', 'PostgreSQL', 'OCI'],
     layout: 'right',
+    timeline: {en: "1 month", es: "1 mes"},
+    status: {en: "Live in Production", es: "Producción"},
+    platform: {en: "Web Application", es: "Aplicación Web"}
   },
   {
     num: '02',
@@ -26,6 +29,9 @@ export const projects: Project[] = [
     roles: { en: ['Mobile Development', 'UI/UX Design', 'App Modernization'], es: ['Desarrollo Mobile', 'Diseño UI/UX', 'Modernización de App'] },
     tech: ['React Native', 'JavaScript', 'Expo', 'EAS', 'Figma'],
     layout: 'left',
+    timeline: {en: "1 month", es: "1 mes"},
+    status: {en: "Live in Production", es: "Producción"},
+    platform: {en: "Mobile Application", es: "Aplicación Móvil"}
   },
   {
     num: '03',
@@ -39,5 +45,8 @@ export const projects: Project[] = [
     roles: { en: ['UI/UX Design', 'Frontend Development', 'Responsive Design'], es: ['Diseño UI/UX', 'Desarrollo Frontend', 'Diseño Responsivo'] },
     tech: ['HTML', 'CSS', 'JavaScript', 'Figma'],
     layout: 'full',
+    timeline: {en: "1 week", es: "1 semana"},
+    status: {en: "Live in Production", es: "Producción"},
+    platform: {en: "Web Application", es: "Aplicación Web"}
   },
 ]

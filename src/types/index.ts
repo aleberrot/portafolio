@@ -12,4 +12,7 @@ export interface Project {
   roles: { en: string[]; es: string[] }
   tech: string[]
   layout: 'right' | 'left' | 'full'
+  timeline: {en: string; es: string}
+  status: {en: string; es: string}
+  platform: {en: string; es: string}
 }
