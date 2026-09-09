@@ -32,8 +32,8 @@ export function AboutSection({ lang }: { lang: Lang }) {
                   </p>
                   <p className="text-dim text-[15px] leading-relaxed">
                     {en
-                      ? 'Based in Venezuela, available worldwide for remote work and freelance projects.'
-                      : 'Basado en Venezuela, disponible mundialmente para trabajo remoto y proyectos freelance.'}
+                      ? 'Based in Chile, available worldwide for remote work and freelance projects.'
+                      : 'Basado en Chile, disponible mundialmente para trabajo remoto y proyectos freelance.'}
                   </p>
                 </div>
               )
